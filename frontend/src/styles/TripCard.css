@@ -1,0 +1,91 @@
+/* Styl karty (Notion/Kanban) */
+.trip-card.notion-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* Lekki cień */
+    transition: box-shadow 0.2s;
+}
+
+.trip-card.notion-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Obrazek */
+.trip-image.notion-image {
+    width: 100%;
+    height: 150px; /* Stała wysokość */
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Placeholder dla braku zdjęcia - jak na Twoim zdjęciu */
+.trip-image.notion-image.placeholder {
+    background-color: #e30000; /* Czerwone tło */
+    text-transform: uppercase;
+}
+
+.placeholder-text {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    padding: 0.5rem;
+    border: 4px solid white;
+    line-height: 1;
+}
+
+/* Zawartość karty */
+.trip-content.notion-content {
+    padding: 0.75rem 1rem;
+}
+
+.trip-title-notion {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: #1f2937;
+}
+
+.trip-destination-notion {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+}
+
+/* Szczegóły (daty, budżet) */
+.trip-details-grid {
+    display: flex;
+    flex-direction: column; /* Ustawienie pionowe */
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.detail-item {
+    font-size: 0.85rem;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+}
+
+.detail-value {
+    /* Upewnienie się, że daty i budżet są wyraźne */
+    font-weight: 500;
+}
+
+/* Checkbox "Done" */
+.trip-checkbox.notion-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: #4b5563;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f3f4f6; /* Lekka linia oddzielająca */
+}

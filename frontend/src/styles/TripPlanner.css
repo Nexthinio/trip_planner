@@ -1,0 +1,190 @@
+/* --- STYLY DLA TRIP PLANNER (Nowy, minimalistyczny styl Notion) --- */
+
+/* Lista Planerów i Journali (po usunięciu boxu) */
+.trip-list.notion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+/* Styl dla przycisku "+ New Trip" */
+.new-trip-btn {
+  display: flex; /* Dodajemy flex, by ikona "+" była obok tekstu */
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+  padding: 0.2rem 0.2rem;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.1s;
+}
+
+.new-trip-btn:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Kontener dla pola wprowadzania (gdy klikamy "+ New Trip") */
+.new-trip-input-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.2rem;
+}
+
+/* Styl dla pola wprowadzania w nowym stylu */
+.trip-input-notion {
+  flex: 1;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.95rem;
+  background-color: transparent;
+}
+
+.trip-input-notion:focus {
+  outline: none;
+  background-color: #ffffff;
+  border: 1px solid #9ca3af;
+  border-radius: 3px;
+}
+
+/* Minimalistyczny przycisk dodawania (np. 'Add') */
+.add-btn-minimal {
+  background-color: #111827;
+  color: white;
+  font-size: 0.75rem;
+  border: none;
+  border-radius: 3px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-btn-minimal:hover {
+  background-color: #374151;
+}
+
+/* Styl dla pola wprowadzania w nowym stylu */
+.trip-input-notion {
+  flex: 1;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.95rem;
+  background-color: transparent;
+  color: #1f2937; /* KLUCZOWA ZMIANA: Ustaw ciemny kolor tekstu */
+}
+
+.trip-input-notion:focus {
+  outline: none;
+  background-color: #ffffff;
+  border: 1px solid #9ca3af;
+  border-radius: 3px;
+  color: #1f2937; /* Upewnij się, że kolor jest ciemny także po focusie */
+}
+
+.trip-item.notion-item:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* Ikona/Placeholder dla elementu listy (np. strzałka, symbol) */
+.icon-placeholder {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Dostosowanie tekstu, gdy lista jest pusta */
+.empty-text {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.2rem;
+}
+
+/* --- STYLY DLA TRIP JOURNAL (Utrzymanie / Udoskonalenie) --- */
+
+.journal-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.journal-title {
+  flex-grow: 1;
+}
+
+.journal-date {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+/* Styl dla widoku Table w Trip Journal */
+.view-selector {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.2rem;
+  border-bottom: 1px solid #e5e7eb; /* Zmienione na bardziej Notio-nowy kolor */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-selector .icon-placeholder {
+  color: #6b7280;
+}
+
+.view-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-icons span {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.section-header {
+  background-color: lightgrey;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.icon,
+.icon-placeholder {
+  color: #6b7280;
+  margin-right: 6px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.new-trip-btn:hover .icon {
+  color: #111827;
+}
+
+/* W TripPlanner.css */
+
+/* Celujemy w drugi span (tytuł) wewnątrz elementu listy */
+.trip-item.notion-item span:nth-child(2) {
+  /* Ustawienie wyglądu, aby był ZAWSZE podkreślony, ale bardzo subtelnie */
+  text-decoration: none;
+
+  /* KLUCZOWA ZMIANA: Stałe, jasne podkreślenie */
+  border-bottom: 1px solid #e5e7eb; /* Używamy jasnoszarej linii */
+
+  padding-bottom: 1px;
+  transition: none; /* Już nie potrzebujemy przejścia */
+}
+
+/* Usunięcie zmian w stanie hover, aby nie zmieniać podkreślenia */
+.trip-item.notion-item:hover span:nth-child(2) {
+  /* Zmieniamy tylko tło, aby uniknąć kolizji */
+  border-bottom: 1px solid #e5e7eb; /* Utrzymujemy stały kolor linii */
+}

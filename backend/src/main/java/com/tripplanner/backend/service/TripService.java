@@ -78,6 +78,7 @@ public class TripService {
                     trip.setBudget(tripDetails.getBudget());
                     trip.setDestination(tripDetails.getDestination());
                     trip.setImage(tripDetails.getImage());
+                    trip.setDone(tripDetails.isDone());
 
                     return tripRepository.save(trip);
                 })

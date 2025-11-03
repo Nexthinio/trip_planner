@@ -1,18 +1,21 @@
 package com.tripplanner.backend.controller;
 
 import com.tripplanner.backend.model.Trip;
+import com.tripplanner.backend.model.User;
 import com.tripplanner.backend.service.TripService;
 import com.tripplanner.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/trips")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TripController {
 
     @Autowired
@@ -21,10 +24,26 @@ public class TripController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Trip> createTrip(@RequestBody Trip trip) {
+    public ResponseEntity<Trip> createTrip(@RequestBody Map<String, Object> tripData) {
+        Long userId = Long.valueOf(tripData.get("userId").toString());
+
+        User user = userService.getUserById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Trip trip = new Trip();
+        trip.setTitle((String) tripData.get("title"));
+        trip.setDescription((String) tripData.get("description"));
+        trip.setDestination((String) tripData.get("destination"));
+        trip.setBudget(Double.valueOf(tripData.get("budget").toString()));
+        trip.setStartDate(LocalDate.parse((String) tripData.get("startDate")));
+        trip.setEndDate(LocalDate.parse((String) tripData.get("endDate")));
+        trip.setDone(false);
+        trip.setUser(user);
+
         Trip savedTrip = tripService.addTrip(trip);
         return ResponseEntity.ok(savedTrip);
     }
+
 
     @GetMapping
     public ResponseEntity<List<Trip>> getAllTripsForUser(@RequestParam Long userId) {

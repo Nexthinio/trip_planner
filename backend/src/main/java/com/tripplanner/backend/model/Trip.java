@@ -21,6 +21,9 @@ public class Trip {
     private LocalDate endDate;
     private Double budget;
 
+    @Column(name = "isDone")
+    private boolean isDone = false;
+
     @OneToOne(mappedBy = "trip", cascade = CascadeType.ALL)
     @JsonManagedReference
     private File image;
