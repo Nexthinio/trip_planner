@@ -2,6 +2,7 @@ package com.tripplanner.backend.controller;
 
 import com.tripplanner.backend.model.Trip;
 import com.tripplanner.backend.model.User;
+import com.tripplanner.backend.payload.CreateTripRequest;
 import com.tripplanner.backend.service.TripService;
 import com.tripplanner.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/trips")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5174")
 public class TripController {
 
     @Autowired
@@ -24,25 +25,25 @@ public class TripController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Trip> createTrip(@RequestBody Map<String, Object> tripData) {
-        Long userId = Long.valueOf(tripData.get("userId").toString());
+    public ResponseEntity<Trip> createTrip(@RequestBody CreateTripRequest req) {
 
-        User user = userService.getUserById(userId)
+        User user = userService.getUserById(req.userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Trip trip = new Trip();
-        trip.setTitle((String) tripData.get("title"));
-        trip.setDescription((String) tripData.get("description"));
-        trip.setDestination((String) tripData.get("destination"));
-        trip.setBudget(Double.valueOf(tripData.get("budget").toString()));
-        trip.setStartDate(LocalDate.parse((String) tripData.get("startDate")));
-        trip.setEndDate(LocalDate.parse((String) tripData.get("endDate")));
-        trip.setDone(false);
+        trip.setTitle(req.title);
+        trip.setDescription(req.description);
+        trip.setDestination(req.destination);
+        trip.setBudget(req.budget);
+        trip.setStartDate(LocalDate.parse(req.startDate));
+        trip.setEndDate(LocalDate.parse(req.endDate));
+        trip.setDone(req.done != null ? req.done : false);
         trip.setUser(user);
 
         Trip savedTrip = tripService.addTrip(trip);
         return ResponseEntity.ok(savedTrip);
     }
+
 
 
     @GetMapping

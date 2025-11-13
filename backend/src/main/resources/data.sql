@@ -3,9 +3,9 @@
 -- ========================================
 INSERT INTO app_user (username, password)
 VALUES
-    ('admin', 'admin123'),
-    ('jakub', 'test123'),
-    ('anna', 'pass123');
+    ('admin', '$2a$10$n20xx0MXoBzG7TB1h8PF1Oxmejmfbxj8n7M4qJ6tMz1en6UDmhbky'), --admin123
+    ('jakub', '$2a$10$vGGakmybbkVYdf/C/.j0o.JdjOqha8u4kY4jtY6ODxnRSGjfHaGri'), --test123
+    ('anna', '$2a$10$N/M9U8JDWi/MZP9Lt2LuHeRWh.iwcuo/e1FwywBl6cWsYiqp259xW'); --pass123
 
 -- ========================================
 -- TRIPS

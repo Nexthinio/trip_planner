@@ -1,0 +1,67 @@
+.itsm-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem 0 2rem;
+  margin-top: 200px;
+  align-items: start;
+}
+
+.itsm-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.itsm-description {
+  display: block;
+  opacity: 1;
+  max-height: none;
+  color: white;
+}
+
+.itsm-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.itsm-number {
+  font-size: 1.5rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.itsm-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+/* Smartfony */
+@media (max-width: 768px) {
+  .itsm-card,
+  .itsm-card-1,
+  .itsm-card-2 {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .itsm-section {
+    margin-top: 100px;
+    padding: 2rem 1rem 0 1rem;
+  }
+}
+
+/* Tablety */
+@media (max-width: 1024px) {
+  .itsm-card,
+  .itsm-card-1,
+  .itsm-card-2 {
+    max-width: 45%;
+  }
+}

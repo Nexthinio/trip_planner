@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/trip-planners")
-@CrossOrigin(origins = "http://localhost:5173") // dla frontu React
+@CrossOrigin(origins = "http://localhost:5174") // dla frontu React
 public class TripPlannerController {
 
     private final TripPlannerService tripPlannerService;

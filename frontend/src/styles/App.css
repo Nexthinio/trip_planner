@@ -45,6 +45,7 @@ html {
   font-size: 1.75rem;
   font-weight: 700;
   margin: 0;
+  color: white;
 }
 
 /* Menu zakładek (Tabs) - styl Notion */
@@ -142,6 +143,12 @@ html {
   }
 }
 
+input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  transform: scale(1) !important;
+}
+
 .empty-placeholder {
   grid-column: 1 / -1;
   display: flex;
@@ -174,4 +181,106 @@ html {
 .empty-subtext {
   font-size: 0.85rem;
   color: #9ca3af;
+}
+
+/* ciemne tło */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* okno */
+.popup-window {
+  background: black;
+  padding: 24px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease-out;
+  color: grey;
+}
+
+.popup-window h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.popup-label {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #444;
+}
+
+.popup-input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: grey;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: grey;
+}
+
+.logout-button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-button:hover {
+  background: #d93636;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-cancel,
+.popup-save {
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.popup-cancel {
+  background: #eee;
+}
+
+.popup-save {
+  background: #5cb85c;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

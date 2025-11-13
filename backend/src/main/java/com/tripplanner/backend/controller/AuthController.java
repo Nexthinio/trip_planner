@@ -1,6 +1,7 @@
 package com.tripplanner.backend.controller;
 
-import com.tripplanner.backend.payload.SignUpRequest;
+import com.tripplanner.backend.payload.AuthRequest;
+import com.tripplanner.backend.payload.AuthResponse;
 import com.tripplanner.backend.security.JwtUtils;
 import com.tripplanner.backend.model.User;
 import com.tripplanner.backend.repository.UserRepository;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5174")
 public class AuthController {
 
     @Autowired
@@ -36,33 +37,40 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User loginRequest) {
+    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest authRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        User user = userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
         String jwt = jwtUtils.generateJwtToken(userDetails.getUsername());
 
-        return ResponseEntity.ok(jwt);
+        AuthResponse response = new AuthResponse(jwt, user.getUserId(), user.getUsername());
+
+        return ResponseEntity.ok(response);
     }
 
+
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody SignUpRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+    public ResponseEntity<AuthResponse> register(@RequestBody AuthRequest authRequest) {
+        if (userRepository.existsByUsername(authRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body("Error: Username is already taken!");
+                    .body(null);
         }
 
         User user = new User();
-        user.setUsername(signUpRequest.getUsername());
-        user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-
+        user.setUsername(authRequest.getUsername());
+        user.setPassword(passwordEncoder.encode(authRequest.getPassword()));
         userRepository.save(user);
 
-        return ResponseEntity.ok("User registered successfully!");
+        return login(authRequest);
     }
+
 }
 
