@@ -5,11 +5,8 @@ html {
   color: #1f2937;
   margin: 0;
   padding: 0;
-  /* Ustawienie display: flex na body, aby mieć kontrolę nad wyśrodkowaniem */
-  display: flex;
-  justify-content: center; /* Centrowanie poziome zawartości body (czyli app-container) */
-  min-height: 100vh; /* Zapewnienie, że body zajmuje całą wysokość widoku */
   width: 100%;
+  min-height: 100dvh; /* nowa wartość — DZIAŁA POPRAWNIE na mobile */
 }
 
 /* Główne stylowanie kontenera aplikacji */
@@ -17,8 +14,8 @@ html {
   /* KLUCZOWE CENTROWANIE: margin: auto jest teraz obsługiwane przez body/flex */
   max-width: 900px; /* Określ maksymalną szerokość, aby nie rozciągał się na cały ekran */
   width: 100%; /* Upewnienie się, że zajmuje dostępną szerokość do max-width */
-  margin: 1rem 0; /* Górny i dolny margines, poziomy już nie jest potrzebny */
-  padding: 0 2rem; /* Dodajemy padding tylko w poziomie wewnątrz kontenera */
+  margin: 0 auto;
+  padding: 1rem;
 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
