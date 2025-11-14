@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"; // Dodano useRef
 import "../styles/TripPlanner.css";
-import { Plus, Flag } from "lucide-react"; // Importujemy ikony z lucide-react
+import { Plus, Flag, Trash2 } from "lucide-react";
 import { serverPath } from "../global";
 
 export default function TripPlanner() {
@@ -76,6 +76,18 @@ export default function TripPlanner() {
 
   if (loading) return <div>Loading planners...</div>;
 
+  const handleDeletePlanner = (plannerId) => {
+    fetch(`${serverPath}/trip-planners/${plannerId}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to delete");
+        // usuń lokalnie z listy
+        setPlanners((prev) => prev.filter((p) => p.plannerId !== plannerId));
+      })
+      .catch((err) => console.error("Error deleting planner:", err));
+  };
+
   return (
     <div>
       <h3 className="section-header">Trip Planner</h3>
@@ -123,6 +135,15 @@ export default function TripPlanner() {
           <div key={planner.plannerId} className="trip-item notion-item">
             <Flag size={14} className="icon-placeholder" />
             <span>{planner.title}</span>
+
+            {/* 🔥 przycisk usuwania */}
+            <Trash2
+              size={16}
+              color="red"
+              className="delete-icon"
+              onClick={() => handleDeletePlanner(planner.plannerId)}
+              style={{ cursor: "pointer", marginLeft: "auto" }}
+            />
           </div>
         ))}
       </div>
