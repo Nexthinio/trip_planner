@@ -53,7 +53,7 @@ export default function TripPlanner() {
   const handleAddPlanner = () => {
     if (!newTitle.trim()) return;
 
-    fetch("http://localhost:8080/trip-planners", {
+    fetch(serverPath + "/trip-planners", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, title: newTitle }),
