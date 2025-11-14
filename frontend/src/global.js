@@ -1,6 +1,6 @@
 import { Logout } from "./NavigationLP";
 
-export const serverPath = "http://localhost:8080";
+export const serverPath = "https://heartfelt-comfort-production.up.railway.app";
 
 export const checkToken = (token) => {
   if (!token || token === null) {

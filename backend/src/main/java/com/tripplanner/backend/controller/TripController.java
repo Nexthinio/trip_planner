@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/trips")
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin(origins = "https://tripplanner-production-c097.up.railway.app")
 public class TripController {
 
     @Autowired

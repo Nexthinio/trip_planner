@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/trip-planners")
-@CrossOrigin(origins = "http://localhost:5174") // dla frontu React
+@CrossOrigin(origins = "https://tripplanner-production-c097.up.railway.app")
 public class TripPlannerController {
 
     private final TripPlannerService tripPlannerService;
