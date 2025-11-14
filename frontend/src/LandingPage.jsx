@@ -58,7 +58,8 @@ function LandingPage() {
             <Link to="/">Contact</Link>
           </div>
           <div className="navigation-item">
-            <Link to="/login">Login</Link> | <Link to="/">Register</Link>
+            <Link to="/login">Login</Link> |{" "}
+            <Link to="/register">Register</Link>
           </div>
         </div>
       </section>
