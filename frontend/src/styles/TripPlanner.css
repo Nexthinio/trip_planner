@@ -188,3 +188,44 @@
   /* Zmieniamy tylko tło, aby uniknąć kolizji */
   border-bottom: 1px solid #e5e7eb; /* Utrzymujemy stały kolor linii */
 }
+
+/* Wiersz planera */
+.planner-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.planner-row:hover {
+  background: #f5f5f5;
+}
+
+/* Lewa część (ikona + tekst) */
+.planner-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Kosz po prawej */
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+/* Pojawia się na hover */
+.planner-row:hover .delete-btn {
+  opacity: 1;
+}
+
+/* Na hover robi się czerwona jak w Notion */
+.delete-btn:hover {
+  color: #e11d48; /* ładna czerwień */
+}

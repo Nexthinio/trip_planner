@@ -81,8 +81,7 @@ export default function TripPlanner() {
       method: "DELETE",
     })
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to delete");
-        // usuń lokalnie z listy
+        if (!res.ok) throw new Error("Delete failed");
         setPlanners((prev) => prev.filter((p) => p.plannerId !== plannerId));
       })
       .catch((err) => console.error("Error deleting planner:", err));
@@ -132,18 +131,21 @@ export default function TripPlanner() {
         )}
 
         {planners.map((planner) => (
-          <div key={planner.plannerId} className="trip-item notion-item">
-            <Flag size={14} className="icon-placeholder" />
-            <span>{planner.title}</span>
+          <div
+            key={planner.plannerId}
+            className="trip-item notion-item planner-row"
+          >
+            <div className="planner-left">
+              <Flag size={14} className="icon-placeholder" />
+              <span>{planner.title}</span>
+            </div>
 
-            {/* 🔥 przycisk usuwania */}
-            <Trash2
-              size={16}
-              color="red"
-              className="delete-icon"
+            <button
+              className="delete-btn"
               onClick={() => handleDeletePlanner(planner.plannerId)}
-              style={{ cursor: "pointer", marginLeft: "auto" }}
-            />
+            >
+              🗑️
+            </button>
           </div>
         ))}
       </div>
