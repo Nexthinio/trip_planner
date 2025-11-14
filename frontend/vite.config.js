@@ -4,10 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: {
-    proxy: {
-      "/trips": "http://localhost:8080",
-      "/api": "http://localhost:8080",
-    },
+  preview: {
+    allowedHosts: ["tripplanner-production-c097.up.railway.app"],
+    host: "0.0.0.0",
+    port: 4173,
   },
 });
