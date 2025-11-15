@@ -1,8 +1,8 @@
-import "./styles/FooterLP.css";
-import "./styles/HeaderLP.css";
-import "./styles/GeneralLP.css";
-import "./styles/FormLP.css";
-import "./styles/Navigation.css";
+import "../styles/FooterLP.css";
+import "../styles/HeaderLP.css";
+import "../styles/GeneralLP.css";
+import "../styles/FormLP.css";
+import "../styles/Navigation.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";

@@ -1,10 +1,10 @@
-import "./styles/App.css";
+import "../styles/App.css";
 import TripCard from "./TripCard";
 import TripPlanner from "./TripPlanner";
 import TripJournal from "./TripJournal";
 import { useEffect, useState } from "react";
 import { serverPath } from "../global";
-import { Logout } from "../NavigationLP";
+import { Logout } from "./NavigationLP";
 
 export default function MainScreen() {
   const [trips, setTrips] = useState([]);

@@ -1,10 +1,10 @@
-import "./styles/GeneralLP.css";
-import "./styles/FormLP.css";
+import "../styles/GeneralLP.css";
+import "../styles/FormLP.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import person from "./assets/user-icon.png";
-import locked from "./assets/locked-icon.png";
-import unlocked from "./assets/unlocked-icon.png";
+import person from "../assets/user-icon.png";
+import locked from "../assets/locked-icon.png";
+import unlocked from "../assets/unlocked-icon.png";
 import NavigationLP from "./NavigationLP";
 import { serverPath } from "../global";
 import { useNavigate } from "react-router-dom";

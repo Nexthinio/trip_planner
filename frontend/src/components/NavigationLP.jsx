@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "./styles/HeaderLP.css";
-import logo from "./assets/logo.jpg";
+import "../styles/HeaderLP.css";
+import logo from "../assets/logo.jpg";
 import { useState, useEffect } from "react";
 
 export function Logout() {
