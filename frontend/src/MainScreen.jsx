@@ -156,130 +156,135 @@ export default function MainScreen() {
   });
 
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <div className="header-left">
-          <span className="icon">✈️</span>
-          <h1 className="title">Travel Planner</h1>
+    <div className="mainContainer">
+      <div className="app-container">
+        <header className="app-header">
+          <div className="header-left">
+            <span className="icon">✈️</span>
+            <h1 className="title">Travel Planner</h1>
+          </div>
+
+          <button className="logout-button" onClick={Logout}>
+            Logout
+          </button>
+        </header>
+
+        <div className="tab-menu">
+          <button
+            className={`tab-item ${activeTab === "trips" ? "active" : ""}`}
+            onClick={() => setActiveTab("trips")}
+          >
+            Trips
+          </button>
+          <button
+            className={`tab-item ${activeTab === "done" ? "active" : ""}`}
+            onClick={() => setActiveTab("done")}
+          >
+            Done
+          </button>
+          <button
+            className={`tab-item ${activeTab === "all" ? "active" : ""}`}
+            onClick={() => setActiveTab("all")}
+          >
+            All list
+          </button>
         </div>
-
-        <button className="logout-button" onClick={Logout}>
-          Logout
-        </button>
-      </header>
-
-      <div className="tab-menu">
-        <button
-          className={`tab-item ${activeTab === "trips" ? "active" : ""}`}
-          onClick={() => setActiveTab("trips")}
-        >
-          Trips
-        </button>
-        <button
-          className={`tab-item ${activeTab === "done" ? "active" : ""}`}
-          onClick={() => setActiveTab("done")}
-        >
-          Done
-        </button>
-        <button
-          className={`tab-item ${activeTab === "all" ? "active" : ""}`}
-          onClick={() => setActiveTab("all")}
-        >
-          All list
-        </button>
-      </div>
-      <div className="trip-grid">
-        {filteredTrips.map((trip) => (
-          <TripCard
-            key={trip.tripId}
-            trip={trip}
-            onToggleDone={handleToggleDone}
-          />
-        ))}
-
-        {/* Zawsze widoczny guzik dodawania */}
-        <button className="add-trip-button" onClick={() => setShowPopup(true)}>
-          + Add new trip
-        </button>
-      </div>
-      <div className="bottom-grid-notion">
-        <TripPlanner />
-      </div>
-      {toastMessage && <div className="toast-popup">{toastMessage}</div>}
-      {showPopup && (
-        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-          <div className="popup-window" onClick={(e) => e.stopPropagation()}>
-            <h2>Add New Trip</h2>
-            <label className="popup-label">Title</label>
-            <input
-              type="text"
-              className="popup-input"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+        <div className="trip-grid">
+          {filteredTrips.map((trip) => (
+            <TripCard
+              key={trip.tripId}
+              trip={trip}
+              onToggleDone={handleToggleDone}
             />
+          ))}
 
-            <label className="popup-label">Description</label>
-            <input
-              type="text"
-              className="popup-input"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+          {/* Zawsze widoczny guzik dodawania */}
+          <button
+            className="add-trip-button"
+            onClick={() => setShowPopup(true)}
+          >
+            + Add new trip
+          </button>
+        </div>
+        <div className="bottom-grid-notion">
+          <TripPlanner />
+        </div>
+        {toastMessage && <div className="toast-popup">{toastMessage}</div>}
+        {showPopup && (
+          <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+            <div className="popup-window" onClick={(e) => e.stopPropagation()}>
+              <h2>Add New Trip</h2>
+              <label className="popup-label">Title</label>
+              <input
+                type="text"
+                className="popup-input"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
 
-            <label className="popup-label">Destination</label>
-            <input
-              type="text"
-              className="popup-input"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-            />
+              <label className="popup-label">Description</label>
+              <input
+                type="text"
+                className="popup-input"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
 
-            <label className="popup-label">Start date</label>
-            <input
-              type="date"
-              className="popup-input"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
+              <label className="popup-label">Destination</label>
+              <input
+                type="text"
+                className="popup-input"
+                value={destination}
+                onChange={(e) => setDestination(e.target.value)}
+              />
 
-            <label className="popup-label">End date</label>
-            <input
-              type="date"
-              className="popup-input"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
+              <label className="popup-label">Start date</label>
+              <input
+                type="date"
+                className="popup-input"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
 
-            <label className="popup-label">Budget $</label>
-            <input
-              type="number"
-              className="popup-input"
-              value={budget}
-              onChange={(e) => setBudget(e.target.value)}
-            />
+              <label className="popup-label">End date</label>
+              <input
+                type="date"
+                className="popup-input"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
 
-            <label className="popup-label">Completed?</label>
-            <input
-              type="checkbox"
-              className="popup-input"
-              checked={done}
-              onChange={(e) => setDone(e.target.checked)}
-            />
+              <label className="popup-label">Budget $</label>
+              <input
+                type="number"
+                className="popup-input"
+                value={budget}
+                onChange={(e) => setBudget(e.target.value)}
+              />
 
-            <div className="popup-actions">
-              <button
-                className="popup-cancel"
-                onClick={() => setShowPopup(false)}
-              >
-                Cancel
-              </button>
-              <button className="popup-save" onClick={handleSaveTrip}>
-                Save
-              </button>
+              <label className="popup-label">Completed?</label>
+              <input
+                type="checkbox"
+                className="popup-input"
+                checked={done}
+                onChange={(e) => setDone(e.target.checked)}
+              />
+
+              <div className="popup-actions">
+                <button
+                  className="popup-cancel"
+                  onClick={() => setShowPopup(false)}
+                >
+                  Cancel
+                </button>
+                <button className="popup-save" onClick={handleSaveTrip}>
+                  Save
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
