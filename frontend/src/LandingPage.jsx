@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/logo.jpg";
 import { checkToken } from "./global";
+import NavigationLP from "./NavigationLP";
 
 const cardData = [
   {
@@ -48,22 +49,7 @@ function LandingPage() {
 
   return (
     <>
-      <section className="header">
-        <img src={logo} alt="ITSM Logo" />
-        <div className="navigation-bar">
-          <div className="navigation-item">
-            <Link to="/">About</Link>
-          </div>
-          <div className="navigation-item">
-            <Link to="/">Contact</Link>
-          </div>
-          <div className="navigation-item">
-            <Link to="/login">Login</Link> |{" "}
-            <Link to="/register">Register</Link>
-          </div>
-        </div>
-      </section>
-
+      <NavigationLP />
       <div className="slogan">
         Best <span className="buzzword">TRIP PLANNER</span> out there!
       </div>
