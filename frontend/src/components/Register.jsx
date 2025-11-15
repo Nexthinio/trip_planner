@@ -6,10 +6,10 @@ import person from "./assets/user-icon.png";
 import locked from "./assets/locked-icon.png";
 import unlocked from "./assets/unlocked-icon.png";
 import NavigationLP from "./NavigationLP";
-import { serverPath } from "./global";
+import { serverPath } from "../global";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Register() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(0); // 0 - not tried, 1 - failed
@@ -25,7 +25,7 @@ function Login() {
     };
 
     try {
-      let response = await fetch(serverPath + "/auth/login", {
+      let response = await fetch(serverPath + "/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ function Login() {
       <NavigationLP />
       <div className="login-container">
         <form onSubmit={handleSubmit} className="form">
-          <p className="login">Login</p>
+          <p className="login">Register</p>
           <div className="inputs">
             <div className="username">
               <input
@@ -91,18 +91,8 @@ function Login() {
               />
             </div>
           </div>
-          <div className="remember-me">
-            <input type="checkbox" />
-            <span className="remember-me-text">Remember me</span>
-            <Link className="forgot-password" to="/PasswordReset">
-              Forgot Password?
-            </Link>
-          </div>
-          <div className="login-button">
-            <button type="submit">Login</button>
-          </div>
-          <div className="login-register">
-            Don't have an account yet? <Link to="/register">Register</Link>
+          <div className="login-button register-button">
+            <button type="submit">Register</button>
           </div>
           {success === 2 && (
             <div className="confirmation-message">
@@ -122,4 +112,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

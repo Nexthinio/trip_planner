@@ -6,8 +6,7 @@ import "./styles/Navigation.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "./assets/logo.jpg";
-import { checkToken } from "./global";
+import { checkToken } from "../global";
 import NavigationLP from "./NavigationLP";
 
 const cardData = [

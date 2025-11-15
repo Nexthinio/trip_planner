@@ -1,4 +1,4 @@
-import { Logout } from "./NavigationLP";
+import { Logout } from "./components/NavigationLP";
 
 export const serverPath = "https://heartfelt-comfort-production.up.railway.app";
 
