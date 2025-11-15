@@ -163,6 +163,7 @@
   margin-right: 6px;
   flex-shrink: 0;
   vertical-align: middle;
+  width: 5%;
 }
 
 .new-trip-btn:hover .icon {
@@ -197,6 +198,7 @@
   padding: 8px;
   border-radius: 6px;
   transition: background 0.15s ease;
+  width: 100%;
 }
 
 .planner-row:hover {
@@ -218,6 +220,7 @@
   cursor: pointer;
   opacity: 0.4;
   transition: opacity 0.2s, color 0.2s;
+  width: 5%;
 }
 
 /* Pojawia się na hover */
