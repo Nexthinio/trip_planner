@@ -98,7 +98,7 @@ html {
 /* W App.css */
 
 /* Dolny układ - Planner i Journal */
-.bottom-grid-notion {
+.bottom-grid {
   display: grid;
 
   /* KLUCZOWA ZMIANA: Zmień na jedną kolumnę, która zajmuje całą dostępną szerokość */

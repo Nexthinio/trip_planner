@@ -28,23 +28,23 @@ export default function TripCard({ trip, onToggleDone }) {
   };
 
   return (
-    <div className="trip-card notion-card">
+    <div className="trip-card card">
       {trip.image?.url ? (
         <img
           src={trip.image.url}
           alt={trip.title}
-          className="trip-image notion-image"
+          className="trip-image image-trip"
         />
       ) : (
         // Używamy czerwonego tła z tekstem "test" dla placeholder'a, jak na zdjęciu
-        <div className="trip-image notion-image placeholder">
+        <div className="trip-image image-trip placeholder">
           <span className="placeholder-text">test</span>
         </div>
       )}
 
-      <div className="trip-content notion-content">
-        <div className="trip-title-notion">{trip.title}</div>
-        <div className="trip-destination-notion">{trip.destination}</div>
+      <div className="trip-content trip-content">
+        <div className="trip-title-card">{trip.title}</div>
+        <div className="trip-destination-card">{trip.destination}</div>
 
         <div className="trip-details-grid">
           {/* Daty */}

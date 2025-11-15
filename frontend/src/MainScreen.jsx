@@ -28,7 +28,6 @@ export default function MainScreen() {
         return res.json();
       })
       .then((data) => {
-        // Upewniamy się, że każdy trip ma obiekt image
         const tripsWithImages = data.map((trip) => ({
           ...trip,
           image: trip.image || { url: "" },
@@ -48,20 +47,17 @@ export default function MainScreen() {
 
     const newIsDone = !currentTrip.done;
 
-    // 🔹 Tworzymy nowy obiekt Trip z odwróconym stanem done
     const updatedTripData = {
       ...currentTrip,
       done: newIsDone,
     };
 
-    // 🔹 Optymistyczna aktualizacja interfejsu
     setTrips((prevTrips) =>
       prevTrips.map((trip) =>
         trip.tripId === tripId ? { ...trip, done: newIsDone } : trip
       )
     );
 
-    // 🔹 Aktualizacja na backendzie (PUT)
     fetch(serverPath + "/trips/" + tripId, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -74,7 +70,6 @@ export default function MainScreen() {
         return res.json();
       })
       .then((updatedTripFromBackend) => {
-        // 🔹 Synchronizacja stanu z backendem (ważne!)
         setTrips((prevTrips) =>
           prevTrips.map((trip) =>
             trip.tripId === tripId ? updatedTripFromBackend : trip
@@ -93,7 +88,6 @@ export default function MainScreen() {
       .catch((error) => {
         console.error("Error updating 'done' status:", error);
 
-        // 🔹 Cofnięcie zmian w razie błędu
         setTrips((prevTrips) =>
           prevTrips.map((trip) =>
             trip.tripId === tripId ? { ...trip, done: currentIsDone } : trip
@@ -122,13 +116,10 @@ export default function MainScreen() {
     })
       .then((res) => res.json())
       .then((createdTrip) => {
-        // dodaj nowy rekord do listy
         setTrips((prev) => [...prev, createdTrip]);
 
-        // zamknij popup
         setShowPopup(false);
 
-        // wyczyść pola
         setTitle("");
         setDescription("");
         setDestination("");
@@ -144,7 +135,7 @@ export default function MainScreen() {
 
   const showToast = (message) => {
     setToastMessage(message);
-    setTimeout(() => setToastMessage(null), 2500); // znika po 2,5 sekundy
+    setTimeout(() => setToastMessage(null), 2500);
   };
 
   if (loading) return <div className="loading">Loading trips...</div>;
@@ -152,7 +143,7 @@ export default function MainScreen() {
   const filteredTrips = trips.filter((trip) => {
     if (activeTab === "done") return trip.done;
     if (activeTab === "trips") return !trip.done;
-    return true; // all
+    return true;
   });
 
   return (
@@ -206,7 +197,7 @@ export default function MainScreen() {
             + Add new trip
           </button>
         </div>
-        <div className="bottom-grid-notion">
+        <div className="bottom-grid">
           <TripPlanner />
         </div>
         {toastMessage && <div className="toast-popup">{toastMessage}</div>}

@@ -117,7 +117,7 @@ export default function TripPlanner() {
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               onKeyDown={handleKeyPress}
-              className="trip-input-notion"
+              className="trip-input-card"
               autoFocus
             />
             <button onClick={handleAddPlanner} className="add-btn-minimal">
