@@ -19,6 +19,9 @@ html {
   width: 100%; /* Upewnienie się, że zajmuje dostępną szerokość do max-width */
   margin: 1rem 0; /* Górny i dolny margines, poziomy już nie jest potrzebny */
   padding: 0 2rem; /* Dodajemy padding tylko w poziomie wewnątrz kontenera */
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -244,6 +247,7 @@ input[type="checkbox"] {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
+  max-width: 90px;
 }
 
 .logout-button:hover {
