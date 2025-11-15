@@ -188,8 +188,6 @@ export default function MainScreen() {
               onToggleDone={handleToggleDone}
             />
           ))}
-
-          {/* Zawsze widoczny guzik dodawania */}
           <button
             className="add-trip-button"
             onClick={() => setShowPopup(true)}
