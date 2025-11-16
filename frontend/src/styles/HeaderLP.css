@@ -5,7 +5,7 @@
 .header {
   color: white;
   display: flex;
-  width: 100vw;
+  width: 100%; /* FIX zamiast 100vw */
   justify-content: space-between;
 }
 
@@ -15,10 +15,14 @@
 }
 
 .navigation-bar {
-  margin: 20px 20px 20px 200px;
+  margin: 20px 20px 20px 20px;
   display: flex;
   align-items: center;
   justify-content: right;
+}
+
+.navigation-bar.desktop-only {
+  flex: 1;
 }
 
 .navigation-item {
@@ -29,30 +33,107 @@
   border: 2px solid transparent;
 }
 
+a.logo-link {
+  flex: 1;
+}
+
 .navigation-item:hover {
   border-color: white;
-  border-style: solid;
 }
 
 .navigation-item a {
   display: inline;
 }
 
-.logout,
-.edit-button {
-  border: 2px solid #fe8100;
-  background-color: transparent;
-  color: white;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 50px;
-  transition: all 0.3s ease;
+/* --- HAMBURGER BASE STYLE --- */
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
+  z-index: 9999;
 }
 
-.logout:hover,
-.edit-button:hover {
-  background-color: #fe8100;
-  color: black;
-  cursor: pointer;
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+/* ANIMACJA X */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* MOBILE SLIDE-OUT MENU */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -70vw;
+  width: 70vw;
+  height: 100vh;
+  background: #111;
+  color: white;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 30px;
+  transition: right 0.3s ease-out;
+  z-index: 999;
+}
+
+.mobile-menu.show {
+  right: 0;
+}
+
+.mobile-menu a,
+.mobile-menu button {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.userName-div-mobile {
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+/* --- MOBILE HEADER FIX --- */
+@media (max-width: 870px) {
+  .header {
+    padding: 10px 15px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header img {
+    margin: 0; /* reset desktop margins */
+    width: 70px; /* mniejsze logo */
+  }
+
+  .navigation-bar {
+    margin: 0 !important;
+    display: none; /* hide desktop nav */
+  }
+
+  .hamburger {
+    display: flex;
+    margin: 0; /* very important: reset */
+    position: relative;
+    right: 0;
+  }
 }

@@ -42,26 +42,7 @@
   margin-bottom: 0.75rem;
 }
 
-/* Smartfony */
-@media (max-width: 768px) {
-  .itsm-card,
-  .itsm-card-1,
-  .itsm-card-2 {
-    max-width: 90%;
-    padding: 1.5rem;
-  }
-
   .itsm-section {
     margin-top: 100px;
     padding: 2rem 1rem 0 1rem;
   }
-}
-
-/* Tablety */
-@media (max-width: 1024px) {
-  .itsm-card,
-  .itsm-card-1,
-  .itsm-card-2 {
-    max-width: 45%;
-  }
-}
