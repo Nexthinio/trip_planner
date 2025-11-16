@@ -154,6 +154,7 @@ input[type="checkbox"] {
   width: 16px !important;
   height: 16px !important;
   transform: scale(1) !important;
+  margin-right: 5%;
 }
 
 .empty-placeholder {

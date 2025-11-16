@@ -92,8 +92,10 @@ function Login() {
             </div>
           </div>
           <div className="remember-me">
-            <input type="checkbox" />
-            <span className="remember-me-text">Remember me</span>
+            <div className="remember-me2">
+              <input type="checkbox" />
+              <span className="remember-me-text">Remember me</span>
+            </div>
             <Link className="forgot-password" to="/PasswordReset">
               Forgot Password?
             </Link>
@@ -102,7 +104,8 @@ function Login() {
             <button type="submit">Login</button>
           </div>
           <div className="login-register">
-            Don't have an account yet? <Link to="/register">Register</Link>
+            <span className="no-account-yet">Don't have an account yet? </span>
+            <Link to="/register">Register</Link>
           </div>
           {success === 2 && (
             <div className="confirmation-message">

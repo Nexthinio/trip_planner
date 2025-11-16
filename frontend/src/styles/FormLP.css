@@ -1,5 +1,6 @@
 .login-container {
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   margin: 200px auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.05);
@@ -44,7 +45,7 @@ a {
 }
 
 input {
-  width: 340px;
+  max-width: 340px;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.05);
   border-color: white;
@@ -68,6 +69,12 @@ input::placeholder {
   flex-direction: column;
 }
 
+.remember-me2 {
+  display: flex;
+  flex: 2;
+  margin-right: 10%;
+}
+
 .inputs img {
   width: 25px;
   position: absolute;
@@ -76,7 +83,7 @@ input::placeholder {
 }
 
 .username {
-  width: 340px;
+  max-width: 340px;
   position: relative;
   margin-bottom: 40px;
 }
@@ -97,12 +104,8 @@ input::placeholder {
   margin-left: 10px;
   color: white;
   font-size: 14px;
-  margin-top: 0px;
+  margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.remember-me span {
-  margin-right: 60px;
 }
 
 .register-button {
@@ -113,6 +116,14 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.no-account-yet {
+  flex: 3;
+}
+
+.login-register a {
+  flex: 1;
 }
 
 .login-button button {
@@ -140,6 +151,7 @@ input::placeholder {
 
 .forgot-password {
   font-weight: 700;
+  flex: 2;
 }
 
 .form {
