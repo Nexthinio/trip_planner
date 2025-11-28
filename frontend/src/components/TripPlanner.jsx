@@ -9,12 +9,11 @@ export default function TripPlanner() {
   const [loading, setLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
 
-  // 1. Utworzenie referencji do kontenera wprowadzania
   const inputRef = useRef(null);
 
   var userId = localStorage.getItem("userId");
 
-  // 🔹 Nasłuchiwanie kliknięcia poza polem
+  // Nasłuchiwanie kliknięcia poza polem
   useEffect(() => {
     function handleClickOutside(event) {
       // Sprawdzamy, czy kliknięcie nie było wewnątrz pola wprowadzania
@@ -26,16 +25,13 @@ export default function TripPlanner() {
       }
     }
 
-    // Dodajemy globalny nasłuch kliknięć
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Usuwamy nasłuch przy czyszczeniu komponentu
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isAdding, newTitle]); // Zależności: isAdding (by wiedzieć, czy nasłuchiwać) i newTitle (by sprawdzić, czy jest puste)
+  }, [isAdding, newTitle]);
 
-  // 🔹 Pobranie planerów z backendu (Bez zmian)
   useEffect(() => {
     fetch(`${serverPath}/trip-planners?userId=${userId}`)
       .then((res) => res.json())
@@ -49,7 +45,6 @@ export default function TripPlanner() {
       });
   }, []);
 
-  // 🔹 Dodanie nowego planera (Bez zmian)
   const handleAddPlanner = () => {
     if (!newTitle.trim()) return;
 
@@ -67,7 +62,6 @@ export default function TripPlanner() {
       .catch((err) => console.error("Error creating planner:", err));
   };
 
-  // 🔹 Obsługa Enter do dodawania (Bez zmian)
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleAddPlanner();
@@ -92,23 +86,18 @@ export default function TripPlanner() {
       <h3 className="section-header">Trip Planner</h3>
 
       <div className="trip-list notion-list">
-        {/* przycisk "New Trip" */}
         {!isAdding && (
           <div
             className="new-trip-btn"
             onClick={() => {
               setIsAdding(true);
-              // Opcjonalnie: ustawiamy focus po renderowaniu
-              // W praktyce 'autoFocus' w input jest lepsze, ale to jest opcja
             }}
           >
             <Plus size={16} className="icon" /> New Trip
           </div>
         )}
 
-        {/* input */}
         {isAdding && (
-          // 2. Przypisujemy referencję do kontenera
           <div className="new-trip-input-container" ref={inputRef}>
             <Flag size={14} className="icon-placeholder" />
             <input

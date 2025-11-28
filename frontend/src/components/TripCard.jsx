@@ -1,7 +1,6 @@
 import "../styles/TripCard.css";
 
 export default function TripCard({ trip, onToggleDone }) {
-  // Funkcja formatująca datę (opcjonalnie, ale poprawia czytelność)
   const formatDate = (dateString) => {
     if (!dateString) return "";
     try {
@@ -15,7 +14,7 @@ export default function TripCard({ trip, onToggleDone }) {
         })
         .replace(/\./g, "-");
     } catch (e) {
-      return dateString; // Zwróć niezmieniony, jeśli wystąpi błąd
+      return dateString;
     }
   };
 
@@ -23,7 +22,6 @@ export default function TripCard({ trip, onToggleDone }) {
   const formattedEndDate = formatDate(trip.endDate);
 
   const handleCheckboxChange = () => {
-    // Wywołujemy funkcję z App.jsx, przekazując ID i obecny stan
     onToggleDone(trip.tripId, trip.done);
   };
 
@@ -36,7 +34,6 @@ export default function TripCard({ trip, onToggleDone }) {
           className="trip-image image-trip"
         />
       ) : (
-        // Używamy czerwonego tła z tekstem "test" dla placeholder'a, jak na zdjęciu
         <div className="trip-image image-trip placeholder">
           <span className="placeholder-text">test</span>
         </div>

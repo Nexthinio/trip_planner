@@ -26,12 +26,12 @@ function NavigationLP() {
 
   return (
     <>
-      <section className="header">
+      <header className="header">
         <Link className="logo-link" to="/">
           <img src={logo} alt="Logo" />
         </Link>
 
-        {/* HAMBURGER ONLY ON MOBILE */}
+        {/* Telefony */}
         <div
           className={`hamburger ${menuOpen ? "open" : ""}`}
           onClick={toggleMenu}
@@ -41,7 +41,7 @@ function NavigationLP() {
           <span></span>
         </div>
 
-        {/* DESKTOP MENU */}
+        {/* Komputer */}
         <div className="navigation-bar desktop-only">
           {!loggedIn ? (
             <>
@@ -67,9 +67,9 @@ function NavigationLP() {
             </>
           )}
         </div>
-      </section>
+      </header>
 
-      {/* MOBILE SLIDE-OUT MENU */}
+      {/* Telefony menu wysuwane */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
         {!loggedIn ? (
           <>
